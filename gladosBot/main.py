@@ -42,14 +42,12 @@ def main():
 
                     res = requests.post(host, headers=headers, json={"token": "glados.one"})
 
-                    log_file.write(f"Status: {res.status_code}\n")
-
                     body = res.text
-                    log_file.write(f"Body:\n{body}\n\n")
                     data_dict = json.loads(body)
                     code = data_dict["code"]
                     message = data_dict["message"]
                     log_file.write(f"index = {i}, name = {tag}, code = {code} message={message}\n")
+                    print(f"index = {i}, name = {tag}, code = {code} message={message}\n")
 
                     if code != 0 and not str(message).startswith("Please Try Tomorrow"):
                         send_message(webhook=webhook, message=f"glados: {tag} {body}")
