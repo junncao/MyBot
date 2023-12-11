@@ -1,8 +1,10 @@
 import requests
 import json
 
+from config import WEB_HOOK
 
-def send_message(webhook, message):
+
+def send_message(message, webhook=WEB_HOOK):
     headers = {'Content-Type': 'application/json'}
     data = {
         "msgtype": "text",

@@ -5,7 +5,7 @@ from datetime import datetime
 import json
 
 from common.kimBot import send_message
-from config import webhook
+from config import WEB_HOOK
 
 LOG_PATH = "log.txt"
 CSV_PATH = "data.csv"
@@ -50,7 +50,7 @@ def main():
                     print(f"index = {i}, name = {tag}, code = {code} message={message}\n")
 
                     if code != 0 and not str(message).startswith("Please Try Tomorrow"):
-                        send_message(webhook=webhook, message=f"glados: {tag} {body}")
+                        send_message(message=f"glados: {tag} {body}")
 
             time.sleep(8 * 60 * 60)  # Execute once every 8 hours
 
